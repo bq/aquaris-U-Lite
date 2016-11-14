@@ -519,6 +519,46 @@
 				};
 			};
 		};
+		fpc_reset {
+			fpc_reset_reset: reset {
+				mux {
+					pins = "gpio59";
+					function = "gpio";
+				};
+				config {
+					pins = "gpio59";
+					drive-strength = <2>;
+					bias-disable;
+					output-low;
+				};
+			};
+		fpc_reset_active: active {
+				mux {
+					pins = "gpio59";
+					function = "gpio";
+				};
+				config {
+					pins = "gpio59";
+					drive-strength = <2>;
+					bias-disable;
+					output-high;
+				};
+			};			
+		};
+		fpc_irq_int_active {
+			fpc_irq_active: fpc_irq_active {
+				mux {
+					pins = "gpio9";
+					function = "gpio";
+				};
+				config {
+					pins = "gpio9";
+					drive-strength = <2>;
+					bias-disable;
+					input-enable;
+				};
+			};
+		};
 
 		/* add pingrp for touchscreen */
 		pmx_ts_int_active {
@@ -980,6 +1020,35 @@
 			};
 		};
 
+		ext-spk-pa {
+			ext_spk_pa_act: lines_on {
+				mux {
+					pins = "gpio6";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio6";
+					drive-strength = <8>;
+					output-high;
+					bias-pull-down;
+				};
+			};
+
+			ext_spk_pa_sus: lines_off {
+				mux {
+					pins = "gpio6";
+					function = "gpio";
+				};
+
+				config {
+					pins = "gpio6";
+					drive-strength = <2>;
+					bias-pull-down;
+				};
+			};
+		};
+
 		/* WSA VI sense */
 		wsa-vi {
 			wsa_vi_on: wsa_vi_on {
@@ -1377,6 +1446,33 @@
 				drive-strength = <2>; /* 2 MA */
 			};
 		};
+               cam_sensor_af_default: cam_sensor_af_default {
+                        /* RESET, STANDBY */
+                        mux {
+                                pins = "gpio7", "gpio8";
+                                function = "gpio";
+                        };
+
+                        config {
+                                pins = "gpio7","gpio8";
+                                bias-disable; /* No PULL */
+                                drive-strength = <2>; /* 2 MA */
+                        };
+                };
+
+                cam_sensor_af_sleep: cam_sensor_af_sleep {
+                        /* RESET, STANDBY */
+                        mux {
+                                pins = "gpio7","gpio8";
+                                function = "gpio";
+                        };
+
+                        config {
+                                pins = "gpio7","gpio8";
+                                bias-disable; /* No PULL */
+                                drive-strength = <2>; /* 2 MA */
+                        };
+                };
 
 		cam_sensor_rear_vdig: cam_sensor_rear_vdig {
 			/* VDIG */

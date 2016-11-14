@@ -33,7 +33,7 @@
 		other_ext_mem: other_ext_region@0 {
 			compatible = "removed-dma-pool";
 			no-map;
-			reg = <0x0 0x85b00000 0x0 0xd00000>;
+			reg = <0x0 0x84A00000 0x0 0x1E00000>;
 		};
 
 		modem_mem: modem_region@0 {
@@ -94,7 +94,9 @@
 		smd6 = &smdtty_apps_riva_ant_data;
 		smd7 = &smdtty_data1;
 		smd8 = &smdtty_data4;
-		smd11 = &smdtty_data11;
+		// oem-start
+		//smd11 = &smdtty_data11;
+		// oem-end
 		smd21 = &smdtty_data21;
 		smd36 = &smdtty_loopback;
 		i2c2 = &i2c_2;
@@ -1385,10 +1387,13 @@
 			qcom,smdtty-port-name = "DATA4";
 		};
 
+		// oem-start
+		/*
 		smdtty_data11: qcom,smdtty-data11 {
 			qcom,smdtty-remote = "modem";
 			qcom,smdtty-port-name = "DATA11";
-		};
+		};*/
+		// oem-end
 
 		smdtty_data21: qcom,smdtty-data21 {
 			qcom,smdtty-remote = "modem";
@@ -1515,9 +1520,9 @@
 		qcom,ce-opp-freq = <100000000>;
 	};
 
-	qcom_seecom: qseecom@85b00000 {
+	qcom_seecom: qseecom@84A00000 {
 		compatible = "qcom,qseecom";
-		reg = <0x85b00000 0x800000>;
+		reg = <0x84A00000  0x1900000>;
 		reg-names = "secapp-region";
 		qcom,hlos-num-ce-hw-instances = <1>;
 		qcom,hlos-ce-hw-instance = <0>;
