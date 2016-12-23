@@ -19,7 +19,7 @@
 #include "msm_eeprom.h"
 
 #undef CDBG
-#define CDBG(fmt, args...) pr_err(fmt, ##args)
+#define CDBG(fmt, args...) pr_debug(fmt, ##args)
 
 DEFINE_MSM_MUTEX(msm_eeprom_mutex);
 #ifdef CONFIG_COMPAT
@@ -60,7 +60,7 @@ static int msm_get_read_mem_size
 			}
 		}
 	}
-	pr_err("Total Data Size: %d\n", size);
+	CDBG("Total Data Size: %d\n", size);
 	return size;
 }
 

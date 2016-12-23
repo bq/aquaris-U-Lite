@@ -561,7 +561,7 @@ static int32_t msm_actuator_move_focus(
 	int32_t num_steps = move_params->num_steps;
 	struct msm_camera_i2c_reg_setting reg_setting;
 
-	pr_err("called, dir %d, num_steps %d\n", dir, num_steps);
+	CDBG("called, dir %d, num_steps %d\n", dir, num_steps);
 
 	if (dest_step_pos == a_ctrl->curr_step_pos)
 		return rc;
@@ -1787,7 +1787,6 @@ static int32_t msm_actuator_power_up(struct msm_actuator_ctrl_t *a_ctrl)
 		if (a_ctrl->gconf &&
 			a_ctrl->gconf->gpio_num_info &&
 			a_ctrl->gconf->gpio_num_info->valid[gpio] == 1) {
-                        pr_err("%s:gpio_num = %d",__func__, gpio);
 			rc = msm_camera_request_gpio_table(
 				a_ctrl->gconf->cam_gpio_req_tbl,
 				a_ctrl->gconf->cam_gpio_req_tbl_size, 1);
