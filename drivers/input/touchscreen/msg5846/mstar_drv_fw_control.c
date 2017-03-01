@@ -8827,7 +8827,7 @@ void _DrvFwCtrlMsg28xxCheckFirmwareUpdateBySwId(void)
 
         DBG(&g_I2cClient->dev, "eSwId=0x%x, nMajor=%d, nMinor=%d, nUpdateBinMajor=%d, nUpdateBinMinor=%d\n", eSwId, nMajor, nMinor, nUpdateBinMajor, nUpdateBinMinor);
 
-        if (nUpdateBinMinor > nMinor)
+        if (nUpdateBinMinor != nMinor)
         {
             if (eSwId == MSG28XX_SW_ID_XXXX)
             {
@@ -8876,7 +8876,7 @@ void _DrvFwCtrlMsg28xxCheckFirmwareUpdateBySwId(void)
         }
         else
         {
-            DBG(&g_I2cClient->dev, "The update bin version is older than or equal to the current firmware version on e-flash.\n");
+            DBG(&g_I2cClient->dev, "The update bin version is equal to the current firmware version on e-flash.\n");
             DBG(&g_I2cClient->dev, "Go to normal boot up process.\n");
         }
     }
